@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+<div class="container jumbotron">
+    {% if messages%}
+{% for message in messages%}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{%endfor%}
+{% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label>Username</label>
+        <input  type="text" class="form-control" name="username">
+        <label>Password</label>
+        <input  type="password" class="form-control" name="password">
+        <br><br>
+        <input type="submit" value="LOGIN" class="btn btn-success btn-lg">
+        <input type="reset" value="RESET" class="btn btn-warning btn-lg">
+    </form>
+
+</div>
+{% endblock %}
